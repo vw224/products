@@ -5,13 +5,23 @@ while True:
     name = input('請輸入商品名稱: ')
     if name == 'q':
     	break
-    price = input('請輸入商品價格: ')
+    price = int(input('請輸入商品價格: '))
     products.append([name, price])
-    #p = []
-    #p.append(name)
-    #p.append(price)
-    #products.append(p)
+#    p = []
+#    p.append(name)
+#    p.append(price)
+#    products.append(p)
 print(products)
 
-for product in products:
-	print(product[0], '的價格是', product[1])
+for p in products:
+	print(p[0], '的價格是', p[1])
+
+with open('products.csv', 'w', encoding='utf-8') as f:
+	f. write('商品,價格\n')   #寫入欄位名稱
+	for p in products:
+		f.write(p[0] + ',' + str(p[1]) + '\n')   #csv檔用'逗點'做分隔
+
+#with open('products.txt', 'w') as f:
+#	for p in products:
+#		f.write(p[0] + ',' + p[1] + '\n')
+
